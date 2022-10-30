@@ -19,7 +19,8 @@ import { TinyColor } from '@ctrl/tinycolor';
           <div class="chrome-field">
             <color-editable-input
               [style]="{ input: input, label: label }"
-              label="hex" [value]="hex"
+              label="hex"
+              [value]="hex"
               (onChange)="handleChange($event)"
             ></color-editable-input>
           </div>
@@ -28,28 +29,33 @@ import { TinyColor } from '@ctrl/tinycolor';
           <div class="chrome-field">
             <color-editable-input
               [style]="{ input: input, label: label }"
-              label="r" [value]="rgb.r"
+              label="r"
+              [value]="rgb.r"
               (onChange)="handleChange($event)"
             ></color-editable-input>
           </div>
           <div class="chrome-field">
             <color-editable-input
               [style]="{ input: input, label: label }"
-              label="g" [value]="rgb.g"
+              label="g"
+              [value]="rgb.g"
               (onChange)="handleChange($event)"
             ></color-editable-input>
           </div>
           <div class="chrome-field">
             <color-editable-input
               [style]="{ input: input, label: label }"
-              label="b" [value]="rgb.b"
+              label="b"
+              [value]="rgb.b"
               (onChange)="handleChange($event)"
             ></color-editable-input>
           </div>
           <div class="chrome-field">
-            <color-editable-input *ngIf="!disableAlpha"
+            <color-editable-input
+              *ngIf="!disableAlpha"
               [style]="{ input: input, label: label }"
-              label="a" [value]="rgb.a"
+              label="a"
+              [value]="rgb.a"
               [arrowOffset]="0.01"
               (onChange)="handleChange($event)"
             ></color-editable-input>
@@ -67,21 +73,25 @@ import { TinyColor } from '@ctrl/tinycolor';
           <div class="chrome-field">
             <color-editable-input
               [style]="{ input: input, label: label }"
-              label="s" [value]="round(hsl.s * 100) + '%'"
+              label="s"
+              [value]="round(hsl.s * 100) + '%'"
               (onChange)="handleChange($event)"
             ></color-editable-input>
           </div>
           <div class="chrome-field">
             <color-editable-input
               [style]="{ input: input, label: label }"
-              label="l" [value]="round(hsl.l * 100) + '%'"
+              label="l"
+              [value]="round(hsl.l * 100) + '%'"
               (onChange)="handleChange($event)"
             ></color-editable-input>
           </div>
           <div class="chrome-field">
-            <color-editable-input *ngIf="!disableAlpha"
+            <color-editable-input
+              *ngIf="!disableAlpha"
               [style]="{ input: input, label: label }"
-              label="a" [value]="hsl.a"
+              label="a"
+              [value]="hsl.a"
               [arrowOffset]="0.01"
               (onChange)="handleChange($event)"
             ></color-editable-input>
@@ -92,10 +102,14 @@ import { TinyColor } from '@ctrl/tinycolor';
       <div class="chrome-toggle">
         <div class="chrome-icon" (click)="toggleViews()" #icon>
           <svg class="chrome-toggle-svg" viewBox="0 0 24 24">
-            <path #iconUp fill="#333"
+            <path
+              #iconUp
+              fill="#333"
               d="M12,5.83L15.17,9L16.58,7.59L12,3L7.41,7.59L8.83,9L12,5.83Z"
             />
-            <path #iconDown fill="#333"
+            <path
+              #iconDown
+              fill="#333"
               d="M12,18.17L8.83,15L7.42,16.41L12,21L16.59,16.41L15.17,15Z"
             />
           </svg>
@@ -237,13 +251,11 @@ export class ChromeFieldsComponent implements OnInit {
         $event,
       });
     } else if (data.h || data.s || data.l) {
-      const s = data.s && data.s.replace('%', '');
-      const l = data.l && data.l.replace('%', '');
       this.onChange.emit({
         data: {
           h: data.h || this.hsl.h,
-          s: Number(s || this.hsl.s),
-          l: Number(l || this.hsl.l),
+          s: data.s || this.hsl.s,
+          l: data.l || this.hsl.l,
           source: 'hsl',
         },
         $event,
