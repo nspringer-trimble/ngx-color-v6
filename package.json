@@ -1,10 +1,10 @@
 {
-  "name": "ngx-color",
+  "name": "ngx-color-v6",
   "version": "0.0.0",
   "license": "MIT",
-  "homepage": "https://github.com/scttcper/ngx-color",
-  "bugs": "https://github.com/scttcper/ngx-color/issues",
-  "repository": "scttcper/ngx-color",
+  "homepage": "https://github.com/nspringer-trimble/ngx-color-v6",
+  "bugs": "https://github.com/nspringer-trimble/ngx-color-v6/issues",
+  "repository": "nspringer-trimble/ngx-color-v6",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
